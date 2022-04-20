@@ -1,0 +1,166 @@
+<ng-container >
+
+            <div class="table-responsive" *ngIf="items.length > 0" >
+              <table class="table table-centered mb-0 table-nowrap">
+                <thead class="bg-light">
+                <tr>
+
+                  <th style="max-width: 200px" class="text-center" >{{'stock.product.title' | translate}}</th>
+<!--                  <th>Product Desc</th>-->
+                  <th class="text-center">{{'variant.price' | translate}}</th>
+                  <th >{{'stock.product.form.quantity' | translate}}</th>
+<!--                  <th class="text-center">{{'bill-operation.form.HT' | translate}}</th>-->
+<!--                  <th  class="text-center">{{'bill-operation.item.tva' | translate}}</th>-->
+                  <th class="text-center">{{'bill-operation.form.TTC' | translate}}</th>
+                  <th class="text-center">{{'action.actions' | translate}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of items">
+
+                  <td class="text-center">
+<!--                    <img *ngIf="item.itemIUrl" src="{{ item.itemIUrl }}" alt="product-img" title="product-img" class="avatar-md"/>-->
+                    <h5 class="font-size-14 text-truncate mt-1"><a routerLink="/ecommerce/products/{{item.item.id}}"
+                                                              class="text-dark">
+<!--                      <img src="assets/images/product/img-1.png" alt="product-img" title="product-img" class="avatar-sm" />-->
+                      {{ item.item.name }}</a></h5>
+                  </td >
+<!--                  <td>-->
+<!--                  -->
+<!--                  </td>-->
+                  <td class="text-center">
+                    {{ item.unitPrice  | currency: devise.code : ''}}
+                  </td>
+
+                  <td class="align-middle ">
+                      <div class="d-flex align-items-center" [class.justify-content-center]="!isBasket">
+                        <i *ngIf="isBasket" (click)="decrementItem(item)" class="fa fa-minus-circle text-primary mr-2" style="cursor: pointer; font-size: 2em;"></i>
+                        <span class="font-weight-bold" style="font-size: 1.5em;">{{item.quantity}}</span>
+                        <i *ngIf="isBasket" (click)="incrementItem(item)" class="fa fa-plus-circle text-primary mx-2" style="cursor: pointer; font-size: 2em;"></i>
+                      </div>
+                  </td>
+<!--                  <td class="text-center">-->
+<!--                    {{ item.totalHT | currency: 'TND' : '' }}-->
+<!--                  </td>-->
+
+<!--                  <td class="text-center">-->
+<!--                    {{ item.tva }}-->
+<!--                  </td>-->
+                  <td class="text-center">
+                    {{ item.totalTTC  | currency: devise.code : '' }}
+                  </td>
+                  <td style="width: 90px;" class="text-center">
+                    <a href="javascript:void(0);" class="action-icon text-danger" (click)="removeBasketItem(item)" > <i
+                      class="mdi mdi-trash-can font-size-18"></i></a>
+                  </td>
+                </tr>
+
+<!--                <tr class="bg-light text-right">-->
+
+<!--                  <th scope="row" colspan="6">-->
+<!--                    {{'bill-operation.form.HT' | translate}} :-->
+<!--                  </th>-->
+
+<!--                  <td>-->
+<!--                    {{basket.totalHT | currency : 'TND' : '' }} TND-->
+<!--                  </td>-->
+<!--                </tr>-->
+<!--                <tr class="bg-light text-right">-->
+
+<!--                  <th scope="row" colspan="4">-->
+<!--                    Discount :-->
+<!--                  </th>-->
+
+<!--                  <td>-->
+<!--                    - $ 30-->
+<!--                  </td>-->
+<!--                </tr>-->
+<!--                <tr class="bg-light text-right">-->
+
+<!--                  <th scope="row" colspan="6">-->
+<!--                    {{'bill-operation.item.total.tva' | translate}} :-->
+<!--                  </th>-->
+
+<!--                  <td>-->
+<!--                    {{(basket.totalTTC - basket.totalHT) | currency : 'TND' : '' }} TND-->
+<!--                  </td>-->
+<!--                </tr>-->
+                <tr class="bg-light text-right">
+
+                  <th scope="row" colspan="4">
+                    {{'bill-operation.form.TTC' | translate}} :
+                  </th>
+
+                  <td>
+                    {{basket.totalTTC | currency: devise.code : '' }} {{devise.symbol}}
+                  </td>
+                </tr>
+                <tr class="bg-light text-right">
+
+                  <th scope="row" colspan="4">
+                    {{'bill-operation.form.net' | translate}} :
+                  </th>
+
+                  <td>
+                    {{basket.totalAPayer | currency: devise.code : '' }} {{devise.symbol}}
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+<!--    <div class="table-responsive">-->
+<!--        <table class="table table-borderless">-->
+<!--            <thead [class.thead-light]="isBasket || isOrder" class="border-0 py-2">-->
+<!--                <tr>-->
+<!--                   <th scope="col">-->
+<!--                        <div class="p-2 px-3 text-uppercase">Product</div>-->
+<!--                   </th>-->
+<!--                   <th scope="col">-->
+<!--                        <div class="py-2 text-uppercase">Price</div>-->
+<!--                   </th>-->
+<!--                   <th scope="col">-->
+<!--                        <div class="py-2 text-uppercase">Quantity</div>-->
+<!--                   </th>-->
+<!--                    <th scope="col">-->
+<!--                        <div class="py-2 text-uppercase">Total</div>-->
+<!--                    </th>-->
+<!--                    <th *ngIf="isBasket" scope="col" class="border-0">-->
+<!--                        <div class="py-2 text-uppercase">Remove</div>-->
+<!--                    </th>-->
+<!--                </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--                <tr *ngFor="let item of items">-->
+<!--                    <th scope="row">-->
+<!--                        <div class="p-2">-->
+<!--                           <img src="{{item.itemIUrl}}" alt="{{item.itemIName}}" class="img-fluid" style="max-height:50px;">-->
+<!--                           <div class="ml-3 d-inline-block align-middle">-->
+<!--                               <h5 class="mb-0">-->
+<!--                                   <a routerLink="/shop/{{item.id || item.idItem}}" class="text-dark">{{item.itemIName}}</a>-->
+<!--                               </h5>-->
+<!--&lt;!&ndash;                               <span *ngIf="item.type" class="text-muted font-weight-normal font-italic d-bloc">Type: {{item.type}}</span>&ndash;&gt;-->
+<!--                           </div>-->
+<!--                        </div>-->
+<!--                    </th>-->
+<!--                    <td class="align-middle"><strong>{{item.unitPrice | currency: 'INR'}}</strong></td>-->
+<!--                    <td class="align-middle">-->
+<!--                        <div class="d-flex align-items-center" [class.justify-content-center]="!isBasket">-->
+<!--                            <i *ngIf="isBasket" (click)="decrementItem(item)" class="fa fa-minus-circle text-warning mr-2" style="cursor: pointer; font-size: 2em;"></i>-->
+<!--                            <span class="font-weight-bold" style="font-size: 1.5em;">{{item.quantity}}</span>-->
+<!--                            <i *ngIf="isBasket" (click)="incrementItem(item)" class="fa fa-plus-circle text-warning mx-2" style="cursor: pointer; font-size: 2em;"></i>-->
+<!--                        </div>-->
+<!--                    </td>-->
+<!--                    <td class="align-middle">-->
+<!--                        <strong>{{item.unitPrice * item.quantity | currency: 'INR'}}</strong>-->
+<!--                    </td>-->
+<!--                    <td class="align-middle text-center">-->
+<!--                        <a class="text-danger">-->
+<!--                            <i *ngIf="isBasket" (click)="removeBasketItem(item)" class="fa fa-trash" aria-hidden="true" style="cursor: pointer; font-size: 2em;"></i>-->
+
+<!--                        </a>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+</ng-container>

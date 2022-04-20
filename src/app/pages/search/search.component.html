@@ -1,0 +1,46 @@
+<app-breadcrumb [title]="'Search'" [breadcrumb]="'Search'"></app-breadcrumb>
+<!-- section start -->
+<section class="authentication-page section-b-space">
+  <div class="container">
+    <section class="search-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 offset-lg-3">
+            <form class="form-header">
+              <div class="form-group">
+                <input type="text" class="form-control" id="exampleInputPassword1" name="search" [(ngModel)]="keySearch" (keyup)="applyFilter()" placeholder="{{'Search a Product' | translate}}">
+              </div>
+              <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="collection-product-wrapper" id="products">
+      <app-grid-pagination [products]="products" [paginate]="paginate" [layoutView]="layoutView" [sortBy]="sortBy" (setGrid)="updateGridLayout($event)" (setLayout)="updateLayoutView($event)" (sortedBy)="sortByFilter($event)">
+      </app-grid-pagination>
+      <div class="product-wrapper-grid" [ngClass]="layoutView">
+        <div class="row">
+
+          <div class="col-grid-box" [ngClass]="grid" *ngFor="let product of products">
+            <div class="product-box" >
+
+              <app-product-box-one [product]="product" [currency]="productService?.Currency" [thumbnail]="false" [cartModal]="true" [loader]="true">
+              </app-product-box-one>
+            </div>
+          </div>
+          <div class="col-sm-12 text-center section-b-space mt-5 no-found" *ngIf="!products.length">
+            <img src="assets/images/empty-search.jpg" class="img-fluid mb-4">
+            <h3>{{"Sorry!Couldn't find the product you were looking For!!!" | translate}} </h3>
+            <p>{{'Please check if you have misspelt something or try searching with other words.' | translate}}</p>
+            <a [routerLink]="['/shop/collection/left/sidebar']" class="btn btn-solid">{{'continue shopping' | translate}}</a>
+          </div>
+        </div>
+      </div>
+      <app-pagination-search [products]="products" [paginate]="paginate" (setPage)="setPage($event)">
+      </app-pagination-search>
+    </div>
+
+  </div>
+</section>
+<!-- section end -->

@@ -1,0 +1,54 @@
+<!--<owl-carousel-o [options]="HomeSliderConfig" class="home-slider" [ngClass]="class"  >-->
+<!--	<ng-container *ngFor="let slider of sliders " >-->
+<!--	  <ng-template carouselSlide >-->
+<!--	    <div class="home" [ngClass]="textClass"  [ngStyle]="{'background-image': 'url('+slider.image+')'}">-->
+<!--	      <div class="container">-->
+<!--	        <div class="row">-->
+<!--	          <div class="col">-->
+<!--	            <div class="slider-contain">-->
+<!--	              <div>-->
+<!--	                <h4>{{slider.title}}</h4>-->
+<!--	                <h1>{{slider.subTitle}}</h1>-->
+<!--&lt;!&ndash;	                <a [routerLink]="['/shop/collection/left/sidebar']" &ndash;&gt;-->
+<!--&lt;!&ndash;	                   [queryParams]="{ category: category}" &ndash;&gt;-->
+<!--&lt;!&ndash;	                   class="btn btn-solid" [ngClass]="buttonClass">&ndash;&gt;-->
+<!--&lt;!&ndash;	                   {{buttonText}}&ndash;&gt;-->
+<!--&lt;!&ndash;	                </a>&ndash;&gt;-->
+<!--	              </div>-->
+<!--	            </div>-->
+<!--	          </div>-->
+<!--	        </div>-->
+<!--	      </div>-->
+<!--	    </div>-->
+<!--	  </ng-template>-->
+<!--	</ng-container>-->
+<!--</owl-carousel-o>-->
+
+
+<owl-carousel-o [options]="HomeSliderConfig" class="home-slider" [ngClass]="class">
+	<ng-container *ngFor="let slider of sliders">
+		<ng-template carouselSlide >
+			<div class="home" [ngClass]="textClass" [ngStyle]="{ backgroundColor :'#000000' ,'background-image': 'url('+slider.image+')'}">
+				<div  [ngStyle]="{ backgroundColor :'#00000045'}">
+					<div class="container"  >
+						<div class="row">
+							<div class="col">
+								<div class="slider-contain">
+									<div>
+										<h1 [ngStyle]="{color:'#FFF', backgroundColor :'#1769aab8'}">{{slider.subTitle | translate}}</h1>
+<!--										<h4 class="mt-2 " [ngStyle]="{color:'#fff'}">{{slider.title | translate}}</h4>-->
+<!--										<a [routerLink]="['/appliance']"-->
+<!--										   [queryParams]="{ category: category}"-->
+<!--										   class="btn btn-solid" [ngClass]="buttonClass">-->
+<!--											{{buttonText | translate}}-->
+<!--										</a>-->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ng-template>
+	</ng-container>
+</owl-carousel-o>

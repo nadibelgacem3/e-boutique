@@ -1,0 +1,73 @@
+
+.coming-soon {
+  min-height: 100vh; }
+.coming-soon.coming-soon-2 {
+  //background: url("../images/inner-page/maintain-soon/friend.jpg");
+  background-position: center;
+  background-size: cover;
+  min-height: 100%;
+  background-blend-mode: overlay;
+  background-color: rgba(0, 0, 0, 0.6); }
+.coming-soon .bg-coming-soon {
+  //background: url("../images/inner-page/maintain-soon/bg-come-soon.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100%; }
+.coming-soon .socials-lists ul li {
+  padding: 0 10px; }
+.coming-soon .center-container {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+.coming-soon .our-web-text {
+  font-weight: 500;
+  letter-spacing: 1px; }
+.coming-soon .launch-text, .coming-soon .launch-text2 {
+  text-transform: uppercase;
+  color: #b1b1b1; }
+.coming-soon .launch-text {
+  margin-top: 20px;
+  margin-bottom: 80px;
+  letter-spacing: 1px; }
+.coming-soon .launch-text2 {
+  margin-top: 30px;
+  margin-bottom: 60px; }
+.coming-soon .coming-logo {
+  margin-bottom: 45px; }
+.coming-soon .counters-content {
+  display: inline-block; }
+.coming-soon .count {
+  text-align: center;
+  border-right: 1px solid #777;
+  height: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  cursor: pointer; }
+.coming-soon .count.no-border {
+  border-right: none; }
+.coming-soon .count span {
+  font-size: calc(13px + (16 - 13) * ((100vw - 320px) / (1920 - 320)));
+  display: block;
+  padding-top: 10px; }
+.coming-soon .count h2 {
+  font-family: 'Work Sans', sans-serif;
+  padding: 0 40px; }
+.coming-soon .count .days {
+  font-weight: 300; }
+.coming-soon .count .days-text {
+  font-size: calc(20px + (38 - 20) * ((100vw - 320px) / (1920 - 320))); }

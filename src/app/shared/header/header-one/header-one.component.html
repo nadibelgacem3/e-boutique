@@ -1,0 +1,91 @@
+<header class="sticky" [ngClass]="class" [class.fixed]="stick && sticky">
+  <div class="mobile-fix-option"></div>
+  <div class="top-header" *ngIf="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="header-contact">
+            <ul>
+              <li>{{'topbar-title' | translate}} {{company}}</li>
+              <li ><i class="fa fa-phone" aria-hidden="true"></i>{{'call-us' | translate}}: <span dir="ltr" > {{phone1}}</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6 text-right">
+          <ul class="header-dropdown">
+            <li class="compare">
+              <a [routerLink]="['/shop/compare']"><i class="fa fa-random" aria-hidden="true"></i>{{'compare' | translate}}</a>
+            </li>
+            <li class="mobile-wishlist">
+              <a [routerLink]="['/shop/wishlist']"><i class="fa fa-heart" aria-hidden="true"></i>{{'wishlist' | translate}}</a>
+            </li>
+            <li class="onhover-dropdown mobile-account">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <span *ngIf="!(loginStatus$ | async) as loginStatus">{{'My Account' | translate}}</span>
+              <span *ngIf="(loginStatus$ | async) as loginStatus">{{name}}</span>
+              <ul class="onhover-show-div">
+                <li *ngIf="(loginStatus$ | async) as loginStatus" [routerLink]="['/pages/profile']">
+                  <a *ngIf="loginStatus$" data-lng="en"  >
+                    {{'LOGIN.PROFILE' | translate}}
+                  </a>
+                </li>
+                <li *ngIf="(loginStatus$ | async) as loginStatus"  [routerLink]="['/pages/dashboard']">
+                  <a *ngIf="loginStatus$" data-lng="en" >
+                    {{'dashboard' | translate}}
+                  </a>
+                </li>
+                <li *ngIf="!(loginStatus$ | async) as loginStatus$" [routerLink]="['/pages/login']">
+                  <a data-lng="en"   >
+                    {{'login' | translate}}
+                  </a>
+                </li>
+                <li *ngIf=" !(loginStatus$ | async) as loginStatus"  [routerLink]="['/pages/register']" >
+                  <a *ngIf="loginStatus$ " data-lng="en" >
+                    {{'register' | translate}}
+                  </a>
+                </li>
+<!--                <li *ngIf=" !(loginStatus$ | async) as loginStatus">-->
+<!--                  <a *ngIf="loginStatus$ " data-lng="en"  [routerLink]="['/pages/forget/password']">-->
+<!--                    {{'forget-password' | translate}}-->
+<!--                  </a>-->
+<!--                </li>-->
+
+
+
+                <li  *ngIf="(loginStatus$ | async) as loginStatus">
+                  <a data-lng="es" (click)="logout()">
+                    {{'LOGIN.LOGOUT' | translate}}
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="main-menu">
+          <div class="menu-left">
+<!--            <app-left-menu></app-left-menu>-->
+            <div class="brand-logo">
+              <a routerLink="" id="headerlogo">
+                <img [src]="themeLogo" style="max-height: 100px; " class="img-fluid" alt="logo">
+              </a>
+            </div>
+          </div>
+          <div class="menu-right pull-right">
+            <div>
+              <app-menu></app-menu>
+            </div>
+            <div>
+              <app-settings></app-settings>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

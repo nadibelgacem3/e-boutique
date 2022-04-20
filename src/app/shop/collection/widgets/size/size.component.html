@@ -1,0 +1,19 @@
+<div class="collection-collapse-block" [class.open]="collapse"  *ngFor="let variant of variants">
+    <h3 class="collapse-block-title" (click)="collapse = !collapse">{{variant.nameConfigTranslated}}</h3>
+    <div class="collection-collapse-block-content">
+      <div class="color-selector">
+        <div class="collection-brand-filter">
+          <div class="custom-control custom-checkbox collection-filter-checkbox"
+            *ngFor="let size of variant.variantValueConfigs">
+            <input type="checkbox" 
+              [value]="size.nameConfigTranslated"
+              [checked]="checked(size.nameConfigTranslated)"
+              [id]="size.nameConfigTranslated"
+              (change)="appliedFilter($event)" 
+              class="custom-control-input" />
+            <label class="custom-control-label" for="{{ size.nameConfigTranslated }}">{{ size.nameConfigTranslated }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

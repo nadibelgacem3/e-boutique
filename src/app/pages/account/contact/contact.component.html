@@ -1,0 +1,104 @@
+<app-breadcrumb [title]="'HOME.breadCrumb.CONTACTUS2'" [breadcrumb]="'HOME.breadCrumb.CONTACTUS2'"></app-breadcrumb>
+<!--section start-->
+<section class=" contact-page section-b-space">
+    <div class="container">
+        <div class="row section-b-space">
+            <div class="col-lg-7 map">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form class="theme-form" (ngSubmit)="validSubmit()" [formGroup]="validationform">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <label for="validationCustom01">{{'LOGIN.lastname' | translate}}</label>
+                                    <input type="text" class="form-control" id="validationCustom01" formControlName="subject" name="subject"
+                                           placeholder="{{'LOGIN.lastname' | translate}}" [ngClass]="{'is-valid': submit && form.subject.errors}">
+                                    <div *ngIf="submit && form.subject.errors" class="valid-feedback">
+                                        <span *ngIf="form.subject.errors.required">{{'CONTACT.Looksgood' | translate}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validationCustom02">{{'CONTACT.firstName' | translate}}</label>
+                                    <input type="text" class="form-control" id="validationCustom02" formControlName="firstName" name="firstName"
+                                           placeholder="{{'CONTACT.firstName' | translate}}" [ngClass]="{'is-valid': submit && form.firstName.errors}">
+                                    <div *ngIf="submit && form.firstName.errors" class="valid-feedback">
+                                        <span *ngIf="form.firstName.errors.required">{{'CONTACT.Looksgood' | translate}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="review">{{'LOGIN.MobilePhone' | translate}}</label>
+                                    <input type="text" class="form-control" id="review" placeholder="{{'LOGIN.MobilePhone' | translate}}" required="">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="review">{{'CONTACT.E-mail' | translate}}</label>
+                                    <input type="email" class="form-control" id="validationCustom03" formControlName="email" name="email"
+                                           placeholder="{{'CONTACT.E-mail' | translate}}" [ngClass]="{'is-invalid': submit && form.email.errors}">
+                                    <div *ngIf="submit && form.email.errors" class="invalid-feedback">
+                                        <span *ngIf="form.email.errors.required">{{'CONTACT.provide' | translate}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="review">{{'CONTACT.message' | translate}}</label>
+                                    <textarea class="form-control" placeholder="{{'CONTACT.message' | translate}}" id="exampleFormControlTextarea1" rows="6"></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <a class="btn btn-solid"  href="mailto:{{email}}"> {{'CONTACT.send' | translate}}</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+<!--              -->
+<!--                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d50059.12775918716!2d72.78534673554945!3d21.16564923510817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1533793756956"   allowfullscreen></iframe>-->
+<!--           -->
+            </div>
+            <div class="col-lg-5">
+                <div class="contact-right">
+                    <ul>
+                        <li>
+                            <div class="contact-icon">
+                                <img src="assets/images/icon/phone.png" alt="Generic placeholder image">
+                                <h6>{{'CONTACT.CALLUS' | translate}}</h6>
+                            </div>
+                            <div class="media-body">
+                                <p dir="ltr">(+216) {{phone1}}</p>
+                                <p  dir="ltr">(+216) {{phone2}}</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <h6>{{'CONTACT.Address' | translate}}</h6>
+                            </div>
+                            <div class="media-body">
+                                <p>{{streetAddress + ' ' + postalCode + ', ' + city }}</p>
+                                <p>{{ stateProvince + ', ' + countryName}}</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <img src="assets/images/icon/email.png" alt="Generic placeholder image">
+                                <h6>{{'CONTACT.WriteUS' | translate}}</h6>
+                            </div>
+                            <div class="media-body ">
+                                <p ></p>
+                                <p >{{email}}</p>
+                            </div>
+                        </li>
+<!--                        <li>-->
+<!--                            <div class="contact-icon">-->
+<!--                                <i class="fa fa-fax" aria-hidden="true"></i>-->
+<!--                                <h6>Fax</h6>-->
+<!--                            </div>-->
+<!--                            <div class="media-body">-->
+<!--                                <p>Support@Shopcart.com</p>-->
+<!--                                <p>info@shopcart.com</p>-->
+<!--                            </div>-->
+<!--                        </li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!--Section ends-->

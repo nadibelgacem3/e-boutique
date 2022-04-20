@@ -1,0 +1,102 @@
+<app-breadcrumb [title]="'LOGIN.PROFILE'" [breadcrumb]="'LOGIN.PROFILE'"></app-breadcrumb>
+<!-- personal deatail section start -->
+<section class="contact-page register-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>{{'PERSONAL DETAIL' | translate}}</h3>
+                <form class="theme-form "  [formGroup]="UserInfoForm">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="email">{{'LOGIN.lastname' | translate}}</label>
+                            <input type="text" class="form-control" id="last-name" placeholder="{{'LOGIN.lastname' | translate}}" formControlName="lastName"
+                                   [ngClass]="{'is-valid': submit && type.lastName.errors}" required="">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="name">{{'LOGIN.firstName' | translate}}</label>
+                            <input type="text" class="form-control" id="name" placeholder="{{'LOGIN.firstName' | translate}}" required="" formControlName="firstName"
+                                   [ngClass]="{'is-valid': submit && type.firstName.errors}">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="review">{{'LOGIN.MobilePhone' | translate}}</label>
+                            <input type="text" class="form-control" id="review" placeholder="{{'LOGIN.MobilePhone' | translate}}" required="" formControlName="phone" mask="00-000-000"
+                                   [ngClass]="{'is-valid': typesubmit && type.firstName.errors}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email">{{'LOGIN.Email' | translate}}</label>
+                            <input type="email" class="form-control" id="email" placeholder="{{'LOGIN.Email' | translate}}" required="" formControlName="email"
+                                   [ngClass]="{'is-valid': UserInfoForm.get('email').invalid && UserInfoForm.get('email').touched}">
+                        </div>
+<!--                        <div class="col-md-12">-->
+<!--                            <label for="review">Write Your Message</label>-->
+<!--                            <textarea class="form-control mb-0" placeholder="Write Your Message" id="exampleFormControlTextarea1" rows="6"></textarea>-->
+<!--                        </div>-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section ends -->
+<!-- address section start -->
+<section class="contact-page register-page section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>{{'SHIPPING ADDRESS' | translate}}</h3>
+                <form class="theme-form" [formGroup]="addressCompanyForm" >
+                    <div class="form-row">
+<!--                        <div class="form-group col-md-4">-->
+<!--                            <label class="form-control-label " translate="Location.countryName" for="field_countryName"></label>-->
+<!--                            <select  class="custom-select  form-control custom-select-md" id="field_countryName" name="countryName"  formControlName="countryName"  [(ngModel)]="pays"  (change)="showGovDel()"     >-->
+<!--                                &lt;!&ndash;              <option [ngValue]="null">AUTRES</option>&ndash;&gt;-->
+<!--                                <option [ngValue]="pay" *ngFor="let pay of payss;"> {{ pay.name }} </option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+
+                        <div class="form-group col-md-6" >
+                            <label class="form-control-label " translate="Location.stateProvince" for="field_stateProvince"></label>
+                            <select  class="custom-select  form-control custom-select-md" id="field_stateProvince" name="stateProvince" formControlName="stateProvince"   [(ngModel)]="stateProvince"  (change)="changeCity()"  >
+                                <option [ngValue]="null">select ...</option>
+                                <option [ngValue]="stateProv" *ngFor="let stateProv of governments;">{{ stateProv.name }}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6" >
+                            <label class="form-control-label " translate="Location.city" for="field_city" ></label>
+                            <select  class="custom-select  form-control custom-select-md" id="field_city" name="city" formControlName="city" [(ngModel)]="city" >
+                                <option [ngValue]="null">select ...</option>
+                                <option    [ngValue]="field_city" *ngFor="let field_city of delegations_v2;">{{ field_city.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label >{{'global.company' | translate}}</label>
+                            <input type="text" class="form-control" id="adresse" placeholder="{{'global.company' | translate}}" formControlName="streetAddress"  [ngClass]="{'is-valid': submit && type.adresse.errors}">
+                            <div *ngIf="submit && type.streetAddress.errors" class="valid-feedback">
+                                <span *ngIf="type.streetAddress.errors.required" translate="entity.validation.required"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label >{{'Location.postalCode' | translate}}</label>
+                            <input type="text" class="form-control" id="zip" placeholder="{{'Location.postalCode' | translate}}" formControlName="postalCode" mask="00000-000"
+                                   [ngClass]="{'is-valid': submit && type.postalCode.errors}">
+                            <div *ngIf="submit && type.postalCode.errors" class="invalid-feedback">
+                                <span *ngIf="type.postalCode.errors.required" translate="entity.validation.required"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+                                        <div class="col-md-12">
+                                            <button class="btn btn-sm btn-solid" (click)="onValidate()" type="submit">{{'Save setting' | translate}}</button>
+                                        </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section ends -->

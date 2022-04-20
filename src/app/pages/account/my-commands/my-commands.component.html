@@ -1,0 +1,56 @@
+
+<section class="cart-section section-b-space">
+  <div class="container">
+    <div class="col-sm-12 empty-cart-cls text-center" *ngIf="!myCommand.length">
+      <img src="assets/images/icon-empty-cart.png" class="img-fluid mb-4">
+<!--      <h3><strong>{{'Your Cart is Empty' | translate}}</strong></h3>-->
+<!--      <h4>{{'Add something to make me happy :)' | translate}}</h4>-->
+    </div>
+    <div class="row" *ngIf="myCommand.length">
+      <div class="col-sm-12">
+        <table class="table cart-table table-responsive-xs">
+          <thead>
+          <tr class="table-head">
+            <th scope="col" >{{'global.ref'  | translate}}</th>
+            <th  scope="col">{{'total'  | translate}}</th>
+            <th  scope="col">{{'bill-operation.form.date'  | translate}}</th>
+            <th  scope="col">{{'global.state'  | translate}}</th>
+          </tr>
+          </thead>
+          <tbody *ngFor="let command of myCommand">
+          <tr>
+            <td>
+              <h4>{{command.reference}}</h4>
+            </td>
+
+            <td>
+              <h4>
+                {{ (command.totalAPayer) | currency:productService?.Currency.currency:'' }}
+              </h4>
+            </td>
+
+            <td>
+              <h4>
+                {{ command.date | date: 'yyyy-MM-dd' }}
+              </h4>
+            <td>     <div class="badge badge-soft-info font-size-12 mr-1" [ngClass]="{
+
+                                           'badge-soft-info': command.status === 'DRAFT',
+                                          'badge-soft-success': command.status === 'VALIDATE',
+                                            'badge-soft-dark':command.status === 'DELIVERED',
+                                            'badge-soft-warning': command.status === 'PAYMENT_IN_PROGRESS'}">
+              <ngb-highlight
+                      [result]="'bill-operation.InvoiceStatusEnum.'+command.status | translate"
+              ></ngb-highlight>
+            </div></td>
+
+
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+  </div>
+</section>
